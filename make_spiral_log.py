@@ -7,4 +7,4 @@ ranges = [(d.isoformat()+'Z', (d+timedelta(days=1)).isoformat()+'Z') for d in da
 urls = [gen_url(s, e) for s, e in ranges]
 
 entries = [rq.get(url, verify=False).json() for url in urls]
-minimal = [{'start':e['start'], 'stop':e['stop'], 'pid': e['pid']} for e in sum(entries, [])]
+minimal = [[{'start':e['start'], 'stop':e['stop'], 'pid': e['pid']} for e in de] for de in entries]
